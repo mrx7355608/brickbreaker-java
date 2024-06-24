@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Ball.java</file>
+            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/GamePanel.java</file>
             <file>file:/D:/Projects/Java/BrickBreaker/src/brickbreaker/BrickBreaker.java</file>
-            <file>file:/D:/Projects/Java/BrickBreaker/src/brickbreaker/Movement.java</file>
-            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Game.java</file>
-            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/NewJFrame.java</file>
+            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/GameFrame.java</file>
+            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Base.java</file>
         </group>
     </open-files>
 </project-private>
