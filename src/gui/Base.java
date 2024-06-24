@@ -55,7 +55,10 @@ public class Base extends JButton {
         actionMap.put("moveLeft", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Base.this.velocity = -5;
+                if (x < 0) {
+                    return;
+                }
+                velocity = -5;
             }
             
         });
@@ -63,7 +66,10 @@ public class Base extends JButton {
         actionMap.put("moveRight", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Base.this.velocity = 5;
+                if (x + BASE_WIDTH >= 780) {
+                    return;
+                }
+                velocity = 5;
             }
             
         });

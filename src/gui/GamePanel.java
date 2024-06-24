@@ -41,6 +41,10 @@ public class GamePanel extends JPanel implements ActionListener {
                 ball.y + ball.getBALL_HEIGHT() >= base.y
                 ) {
             ball.yVelocity *= -1;
+            
+            if (ball.x > 400) {
+                ball.xVelocity *= -1;
+            }
         }
     }
 
