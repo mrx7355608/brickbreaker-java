@@ -51,6 +51,10 @@ public class Base extends JButton implements KeyListener {
 
     public void move() {
         this.x += this.velocity;
+        
+        if (this.x <= 5 || (this.x + this.BASE_WIDTH) >= 780 ) {
+            this.velocity = 0;
+        }
     }
 
     public int getBASE_WIDTH() {
