@@ -26,8 +26,8 @@ import javax.swing.JButton;
  */
 public class Base extends JButton implements KeyListener {
     private final int BASE_WIDTH = 130;
-    private final int BASE_HEIGHT = 20;
-    public int x = 400;
+    private final int BASE_HEIGHT = 15;
+    public int x = 325;
     public int y = 400;
     private int velocity = 0;
     
@@ -36,12 +36,12 @@ public class Base extends JButton implements KeyListener {
         super.setPreferredSize(new Dimension(BASE_WIDTH, BASE_HEIGHT));
         super.setBounds(x, y, BASE_WIDTH, BASE_HEIGHT); // set initial x & y coordinates of base
         super.addKeyListener(this);
+        super.setBorderPainted(false);
 
-        
         // Load base image
         Image baseImage;
         try {
-            baseImage = ImageIO.read(new File("assets/base2.jpg"));
+            baseImage = ImageIO.read(new File("assets/base2.jpg")).getScaledInstance(BASE_WIDTH, BASE_HEIGHT, Image.SCALE_SMOOTH);
             super.setIcon(new ImageIcon(baseImage));
         } catch (IOException ex) {
             System.out.println("[ERROR] Unable to load base image");
@@ -74,11 +74,9 @@ public class Base extends JButton implements KeyListener {
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_RIGHT) {
-            System.out.println("right");
             this.velocity = 5;
         }
         if (code == KeyEvent.VK_LEFT) {
-            System.out.println("left");
             this.velocity = -5;
         }
     }

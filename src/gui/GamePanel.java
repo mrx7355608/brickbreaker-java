@@ -25,22 +25,15 @@ public class GamePanel extends JPanel implements ActionListener {
 
         backgroundImageLabel = new BackgroundImageLabel();
         base = new Base();
-        timer = new Timer(16, this);
         backgroundImageLabel.add(base);
-
         super.add(backgroundImageLabel, BorderLayout.NORTH);
+        
+        timer = new Timer(16, this);
         timer.start();
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
-        this.repaint();
-        
         base.move();
         base.setBounds(base.x, base.y, base.getBASE_WIDTH(), base.getBASE_HEIGHT());
     }
