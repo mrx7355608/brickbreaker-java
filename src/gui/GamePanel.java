@@ -1,11 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -17,6 +13,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private final int PANEL_HEIGHT = 500;
     private final BackgroundImageLabel backgroundImageLabel;
     private final Base base;
+    private final Ball ball;
     private final Timer timer;
 
     public GamePanel() {
@@ -25,6 +22,8 @@ public class GamePanel extends JPanel implements ActionListener {
 
         backgroundImageLabel = new BackgroundImageLabel();
         base = new Base();
+        ball = new Ball();
+        backgroundImageLabel.add(ball);
         backgroundImageLabel.add(base);
         super.add(backgroundImageLabel, BorderLayout.NORTH);
         
@@ -35,7 +34,14 @@ public class GamePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         base.move();
-        base.setBounds(base.x, base.y, base.getBASE_WIDTH(), base.getBASE_HEIGHT());
+        ball.moveBall();
+        
+        if (ball.x >= base.x &&
+                ball.x <= base.x + base.getBASE_WIDTH() &&
+                ball.y + ball.getBALL_HEIGHT() >= base.y
+                ) {
+            ball.yVelocity *= -1;
+        }
     }
 
 }
