@@ -19,7 +19,6 @@ public class GamePanel extends JPanel implements ActionListener {
     private final BackgroundImageLabel backgroundImageLabel;
     private final Base base;
     private final Ball ball;
-//    private final BricksPanel bricksPanel;
     ArrayList<Brick> bricks = new ArrayList();
     private final Timer timer;
 
@@ -33,16 +32,25 @@ public class GamePanel extends JPanel implements ActionListener {
         backgroundImageLabel.add(ball);
         backgroundImageLabel.add(base);
 
-        for (int i = 0; i < 8; i++) {
+        int xPosition = 0;
+        int yPosition = 0;
+
+        // Create bricks
+        for (int i = 0; i < 28; i++) {
             Brick b2 = new Brick(null);
-            b2.setBounds((i * b2.getBRICK_WIDTH()) + 70, (i * b2.getBRICK_HEIGHT()) + 70, b2.getBRICK_WIDTH(), b2.getBRICK_HEIGHT());
+            
+            xPosition = xPosition + b2.getBRICK_WIDTH() + 10;
+            
+            // Change row after 6 bricks are rendered
+            if (i % 7 == 0) {
+                xPosition = 80;
+                yPosition = yPosition + b2.getBRICK_HEIGHT() + 20;
+            }
+
+            b2.setBounds(xPosition, yPosition, b2.getBRICK_WIDTH(), b2.getBRICK_HEIGHT());
             bricks.add(b2);
             backgroundImageLabel.add(b2);
         }
-
-//        bricksPanel = new BricksPanel();
-//        bricksPanel.setBounds(70, 70, 600, 400);
-//        backgroundImageLabel.add(bricksPanel);
         super.add(backgroundImageLabel, BorderLayout.NORTH);
 
         // Start gameloop
@@ -54,9 +62,8 @@ public class GamePanel extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
         for (Component component : bricks) {
-            Rectangle bounds = component.getBounds();
-            System.out.println(bricks.size());
-            g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+            Rectangle brick = component.getBounds();
+            g.drawRect(brick.x, brick.y, brick.width, brick.height);
         }
     }
 
@@ -78,7 +85,7 @@ public class GamePanel extends JPanel implements ActionListener {
             }
         }
 
-//         Check ball collision with bricks
+        // Check ball collision with bricks
         Iterator<Brick> iterator = bricks.iterator();
         while (iterator.hasNext()) {
             Brick brick = iterator.next();
@@ -88,12 +95,8 @@ public class GamePanel extends JPanel implements ActionListener {
                     && ball.x <= bounds.x + bounds.width
                     && ball.y <= bounds.y + bounds.height
                     && ball.y >= bounds.y) {
-
-                System.out.println(bricks.size());
                 iterator.remove();
                 backgroundImageLabel.remove(brick);
-                backgroundImageLabel.revalidate();
-                backgroundImageLabel.repaint();
                 ball.yVelocity *= -1;
                 break;
             }
