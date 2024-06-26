@@ -74,4 +74,40 @@ public class Levels {
 
         return bricks;
     }
+    
+    public static ArrayList<Brick> createLevelThreeBrickPattern() {
+        ArrayList<Brick> bricks = new ArrayList();
+        
+        // Box 1
+        int xPos1 = 30;
+        int yPos1 = 20;
+        
+        for (int i = 0; i < 8; i++) {            
+            for (int j = 0; j < 5; j++) {
+                Brick brick = new Brick(null);
+                brick.setBounds(xPos1, yPos1, brick.getBRICK_WIDTH(), brick.getBRICK_HEIGHT());
+                bricks.add(brick);
+                xPos1 += brick.getBRICK_WIDTH();
+            }
+            xPos1 = 30;
+            yPos1 += 30;
+        }
+        
+        // Box 2
+        int xPos2 = 400;
+        int yPos2 = 20;
+        
+        for (int i = 0; i < 8; i++) {            
+            for (int j = 0; j < 5; j++) {
+                Brick brick = new Brick(null);
+                brick.setBounds(xPos2, yPos2, brick.getBRICK_WIDTH(), brick.getBRICK_HEIGHT());
+                bricks.add(brick);
+                xPos2 += brick.getBRICK_WIDTH();
+            }
+            xPos2 = 400;
+            yPos2 += 30;
+        }
+        
+        return bricks;
+    }
 }
