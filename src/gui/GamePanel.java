@@ -31,40 +31,18 @@ public class GamePanel extends JPanel implements ActionListener {
         ball = new Ball();
         backgroundImageLabel.add(ball);
         backgroundImageLabel.add(base);
-
-        int xPosition = 0;
-        int yPosition = 0;
-
-        // Create bricks
-        for (int i = 0; i < 28; i++) {
-            Brick b2 = new Brick(null);
-            
-            xPosition = xPosition + b2.getBRICK_WIDTH() + 10;
-            
-            // Change row after 6 bricks are rendered
-            if (i % 7 == 0) {
-                xPosition = 80;
-                yPosition = yPosition + b2.getBRICK_HEIGHT() + 20;
-            }
-
-            b2.setBounds(xPosition, yPosition, b2.getBRICK_WIDTH(), b2.getBRICK_HEIGHT());
-            bricks.add(b2);
-            backgroundImageLabel.add(b2);
+        
+        // Add bricks
+        for (Brick brick : Levels.createLevelTwoBrickPattern()) {
+            bricks.add(brick);
+            backgroundImageLabel.add(brick);
         }
+        
         super.add(backgroundImageLabel, BorderLayout.NORTH);
 
         // Start gameloop
         timer = new Timer(16, this);
         timer.start();
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        for (Component component : bricks) {
-            Rectangle brick = component.getBounds();
-            g.drawRect(brick.x, brick.y, brick.width, brick.height);
-        }
     }
 
     @Override
