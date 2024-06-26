@@ -34,7 +34,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Add bricks - level 3
         for (Brick brick : Levels.createLevelThreeBrickPattern()) {
-            System.out.println(brick.getBounds().y);
             bricks.add(brick);
             backgroundImageLabel.add(brick);
         }
@@ -57,8 +56,7 @@ public class GamePanel extends JPanel implements ActionListener {
         if (ball.x >= base.x
                 && ball.x <= base.x + base.getBASE_WIDTH()
                 && ball.y + ball.getBALL_HEIGHT() >= base.y
-                && ball.y + ball.getBALL_HEIGHT() <= base.y + 10
-        ) {
+                && ball.y + ball.getBALL_HEIGHT() <= base.y + 10) {
             System.out.println("normal");
             ball.yVelocity *= -1;
 
@@ -67,18 +65,16 @@ public class GamePanel extends JPanel implements ActionListener {
             }
         } else if (ball.x + ball.getBALL_WIDTH() >= base.x
                 && ball.x + ball.getBALL_WIDTH() <= base.x + 10
-                && ball.y + ball.getBALL_HEIGHT() >= base.y
-        ) {
+                && ball.y + ball.getBALL_HEIGHT() >= base.y) {
             System.out.println("left side");
             ball.xVelocity *= -1;
             ball.yVelocity *= -1;
         }
-        
+
 //        if (ball.x <= base.x + base.getBASE_WIDTH() && ball.y >= base.y && ball.y <= base.y + base.getBASE_HEIGHT()) {
 //            ball.xVelocity *= -1;
 //            ball.yVelocity *= -1;
 //        }
-
         // Check ball collision with bricks
         Iterator<Brick> iterator = bricks.iterator();
         while (iterator.hasNext()) {
