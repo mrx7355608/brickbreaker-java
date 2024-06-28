@@ -14,7 +14,8 @@
         <group>
             <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Brick.java</file>
             <file>file:/D:/Projects/Java/BrickBreaker/src/gui/GamePanel.java</file>
-            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Levels.java</file>
+            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Ball.java</file>
+            <file>file:/D:/Projects/Java/BrickBreaker/src/gui/Base.java</file>
         </group>
     </open-files>
 </project-private>

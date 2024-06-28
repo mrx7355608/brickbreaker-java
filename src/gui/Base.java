@@ -108,7 +108,6 @@ public class Base extends JButton implements KeyListener {
         
         if (code == KeyEvent.VK_LEFT) {
             isLeftKeyPressed = true;
-            System.out.println("left");
         }
         
         if (code == KeyEvent.VK_RIGHT) {

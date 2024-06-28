@@ -35,10 +35,10 @@ public class Ball extends JButton {
     }
     
     public void moveBall() {
-        if (this.x <= 0 || (this.x +this.getBALL_WIDTH()) >= 790) {
+        if (this.x < 0 || (this.x +this.getBALL_WIDTH()) > 790) {
             this.xVelocity *= -1;
         }
-        if (this.y <= 0) {
+        if (this.y < 0) {
             this.yVelocity *= -1;
         }
         
