@@ -3,8 +3,11 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -94,6 +97,25 @@ public class Ball extends JButton {
         }
     }
 
+    public Brick checkCollisionsWithBricks(ArrayList<Brick> bricks) {
+        Iterator<Brick> iterator = bricks.iterator();
+        while (iterator.hasNext()) {
+            Brick brick = iterator.next();
+            Rectangle bounds = brick.getBounds();
+
+            if (this.x >= bounds.x
+                    && this.x <= bounds.x + bounds.width
+                    && this.y <= bounds.y + bounds.height
+                    && this.y >= bounds.y) {
+                iterator.remove();
+                this.yVelocity *= -1;
+                return brick;
+            }
+        }
+        
+        return null;
+    }
+    
     public int getBALL_WIDTH() {
         return BALL_WIDTH;
     }

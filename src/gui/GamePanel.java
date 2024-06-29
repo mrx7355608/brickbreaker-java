@@ -53,28 +53,13 @@ public class GamePanel extends JPanel implements ActionListener {
         base.move();
         ball.moveBall();
         ball.checkCollisionsWithBase(base);
-        this.checkGameover();
-
-//        if (ball.x <= base.x + base.getBASE_WIDTH() && ball.y >= base.y && ball.y <= base.y + base.getBASE_HEIGHT()) {
-//            ball.xVelocity *= -1;
-//            ball.yVelocity *= -1;
-//        }
-        // Check ball collision with bricks
-        Iterator<Brick> iterator = bricks.iterator();
-        while (iterator.hasNext()) {
-            Brick brick = iterator.next();
-            Rectangle bounds = brick.getBounds();
-
-            if (ball.x >= bounds.x
-                    && ball.x <= bounds.x + bounds.width
-                    && ball.y <= bounds.y + bounds.height
-                    && ball.y >= bounds.y) {
-                iterator.remove();
-                backgroundImageLabel.remove(brick);
-                ball.yVelocity *= -1;
-                break;
-            }
+        Brick collidedBrick = ball.checkCollisionsWithBricks(bricks);
+        if (collidedBrick != null) {
+            backgroundImageLabel.remove(collidedBrick);
         }
+        
+        this.checkGameover();
+        
     }
 
     private void checkGameover() {
