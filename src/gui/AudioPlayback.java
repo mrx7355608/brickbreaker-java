@@ -1,10 +1,7 @@
 package gui;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -26,7 +23,14 @@ public class AudioPlayback implements Runnable {
             audioClip.loop(Clip.LOOP_CONTINUOUSLY);
             audioClip.open(audioStream);
             audioClip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+        } catch (UnsupportedAudioFileException ex) {
+            System.out.println("File not supported");
+            ex.printStackTrace();
+        } catch (LineUnavailableException ex) {
+            System.out.println("Audio line is unavailable");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            System.out.println("Unable to open file");
             ex.printStackTrace();
         }
 

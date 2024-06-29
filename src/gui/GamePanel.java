@@ -13,10 +13,10 @@ public class GamePanel extends JPanel implements ActionListener {
 
     private final int PANEL_WIDTH = 800;
     private final int PANEL_HEIGHT = 500;
-    private final BackgroundImageLabel backgroundImageLabel;
     private final Base base;
     private final Ball ball;
     ArrayList<Brick> bricks = new ArrayList();
+    private final BackgroundImageLabel backgroundImageLabel;
     private final Timer timer;
 
     public GamePanel() {
@@ -28,23 +28,21 @@ public class GamePanel extends JPanel implements ActionListener {
         ball = new Ball();
         backgroundImageLabel.add(ball);
         backgroundImageLabel.add(base);
-
-        // Add bricks - level 3
         for (Brick brick : Levels.createLevelThreeBrickPattern()) {
             bricks.add(brick);
             backgroundImageLabel.add(brick);
         }
-
         super.add(backgroundImageLabel, BorderLayout.NORTH);
 
-        // Create a new thread for playing background music
-        new Thread(new AudioPlayback()).start();
-        
         // Start gameloop
         timer = new Timer(16, this);
         timer.start();
     }
 
+    /**
+     * Main game-loop method. It repaints the game after every 16 milliseconds (60 FPS)
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         super.repaint();
@@ -61,6 +59,11 @@ public class GamePanel extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Displays a game-over dialog box if ball has gone all the way down, below the base
+     * @param
+     * @return 
+    */
     private void checkGameover() {
         if (ball.y >= 500) {
             timer.stop();

@@ -1,7 +1,6 @@
 
 package gui;
 
-import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -17,5 +16,13 @@ public class GameFrame extends JFrame {
         super.setLocationRelativeTo(null);
         super.setIconImage(new ImageIcon("assets/icon.png").getImage());
         super.add(new GamePanel());
+        this.playBackgroundMusic();
+    }
+    
+    /**
+     * Plays background music loop in a separate thread
+     */
+    private void playBackgroundMusic() {
+        new Thread(new AudioPlayback()).start();
     }
 }
