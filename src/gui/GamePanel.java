@@ -1,14 +1,10 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -41,6 +37,9 @@ public class GamePanel extends JPanel implements ActionListener {
 
         super.add(backgroundImageLabel, BorderLayout.NORTH);
 
+        // Create a new thread for playing background music
+        new Thread(new AudioPlayback()).start();
+        
         // Start gameloop
         timer = new Timer(16, this);
         timer.start();
@@ -57,9 +56,9 @@ public class GamePanel extends JPanel implements ActionListener {
         if (collidedBrick != null) {
             backgroundImageLabel.remove(collidedBrick);
         }
-        
+
         this.checkGameover();
-        
+
     }
 
     private void checkGameover() {
