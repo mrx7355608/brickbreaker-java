@@ -1,13 +1,14 @@
-
 package gui;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame {
+
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 500;
-    
+    private final AudioPlayback audioPlayback;
+
     public GameFrame() {
         setTitle("Brick Breaker");
         super.setResizable(false);
@@ -16,13 +17,17 @@ public class GameFrame extends JFrame {
         super.setLocationRelativeTo(null);
         super.setIconImage(new ImageIcon("assets/icon.png").getImage());
         super.add(new GamePanel());
+        audioPlayback = new AudioPlayback();
+        
         this.playBackgroundMusic();
     }
-    
+
     /**
      * Plays background music loop in a separate thread
      */
     private void playBackgroundMusic() {
-        new Thread(new AudioPlayback()).start();
+        new Thread(() -> {
+            audioPlayback.playMusic();
+        }).start();
     }
 }
