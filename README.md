@@ -1,4 +1,4 @@
-<img src="https://imgur.com/TG1ShCG.png" width="100" styles="display: inline" />
+<img src="https://imgur.com/TG1ShCG.png" width="75" />
 
 # Brick Breaker
 A brick breaker game built in java with swing gui toolkit
