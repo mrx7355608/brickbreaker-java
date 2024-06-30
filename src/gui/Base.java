@@ -3,20 +3,13 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.RenderingHints.Key;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
-import javax.swing.InputMap;
 import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
 
 public class Base extends JButton implements KeyListener {
     private final int BASE_WIDTH = 130;
@@ -42,39 +35,6 @@ public class Base extends JButton implements KeyListener {
         } catch (IOException ex) {
             System.out.println("[ERROR] Unable to load base image");
         }
-        
-        // Setting up keybindings
-//        int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
-//        InputMap inputMap = getInputMap(condition);
-//        ActionMap actionMap = getActionMap();
-//        
-//        KeyStroke rightKey = KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0);
-//        KeyStroke leftKey = KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0);
-//        
-//        inputMap.put(leftKey, "moveLeft");
-//        inputMap.put(rightKey, "moveRight");
-//        
-//        actionMap.put("moveLeft", new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (x < 0) {
-//                    return;
-//                }
-//                velocity = -5;
-//            }
-//            
-//        });
-//        
-//        actionMap.put("moveRight", new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (x + BASE_WIDTH >= 780) {
-//                    return;
-//                }
-//                velocity = 5;
-//            }
-//            
-//        });
     }
     
     public void move() {

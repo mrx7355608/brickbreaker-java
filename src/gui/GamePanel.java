@@ -1,5 +1,6 @@
 package gui;
 
+import brickbreaker.Settings;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private final BackgroundImageLabel backgroundImageLabel;
     private final Timer timer;
     private final AudioPlayback audioPlayback;
+    private final Settings gameSettings;
 
     public GamePanel() {
         super.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
@@ -37,14 +39,19 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Audio player for brick break sound effect
         audioPlayback = new AudioPlayback();
-        
+
+        // Game settings
+        gameSettings = new Settings();
+
         // Start gameloop
         timer = new Timer(16, this);
         timer.start();
     }
 
     /**
-     * Main game-loop method. It repaints the game after every 16 milliseconds (60 FPS)
+     * Main game-loop method. It repaints the game after every 16 milliseconds
+     * (60 FPS)
+     *
      * @param e
      */
     @Override
@@ -56,7 +63,9 @@ public class GamePanel extends JPanel implements ActionListener {
         ball.checkCollisionsWithBase(base);
         Brick collidedBrick = ball.checkCollisionsWithBricks(bricks);
         if (collidedBrick != null) {
-            audioPlayback.playSoundEffect();
+            if (gameSettings.isSoundEffectsOn()) {
+                audioPlayback.playSoundEffect();
+            }
             backgroundImageLabel.remove(collidedBrick);
         }
 
@@ -65,10 +74,12 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     /**
-     * Displays a game-over dialog box if ball has gone all the way down, below the base
+     * Displays a game-over dialog box if ball has gone all the way down, below
+     * the base
+     *
      * @param
-     * @return 
-    */
+     * @return
+     */
     private void checkGameover() {
         if (ball.y >= 500) {
             timer.stop();
