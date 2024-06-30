@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements ActionListener {
         ball = new Ball();
         backgroundImageLabel.add(ball);
         backgroundImageLabel.add(base);
-        for (Brick brick : Levels.createLevelThreeBrickPattern()) {
+        for (Brick brick : Levels.createLevelFiveBrickPattern()) {
             bricks.add(brick);
             backgroundImageLabel.add(brick);
         }
