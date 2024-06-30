@@ -22,8 +22,8 @@ public class Base extends JButton implements KeyListener {
     
     public Base() {
         super.setPreferredSize(new Dimension(BASE_WIDTH, BASE_HEIGHT));
-        super.setBounds(x, y, BASE_WIDTH, BASE_HEIGHT); // set initial x & y coordinates of base
-//        super.setBorderPainted(false);
+        super.setBounds(x, y, BASE_WIDTH, BASE_HEIGHT);
+        super.setBorderPainted(false);
         super.setFocusable(true);
         super.addKeyListener(this);
         
@@ -38,9 +38,9 @@ public class Base extends JButton implements KeyListener {
     }
     
     public void move() {
-        if (isRightKeyPressed) {   
+        if (isRightKeyPressed && this.x + this.getBASE_WIDTH() < 780) {
             this.x += 5;
-        } else if (isLeftKeyPressed) {
+        } else if (isLeftKeyPressed && this.x >= 5) {
             this.x -= 5;
         }
         
