@@ -1,5 +1,6 @@
 package gui;
 
+import brickbreaker.AudioPlayback;
 import brickbreaker.Settings;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

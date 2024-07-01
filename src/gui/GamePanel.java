@@ -1,5 +1,6 @@
 package gui;
 
+import brickbreaker.AudioPlayback;
 import brickbreaker.Settings;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

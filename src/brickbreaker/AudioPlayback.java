@@ -1,4 +1,4 @@
-package gui;
+package brickbreaker;
 
 import java.io.File;
 import java.io.IOException;
