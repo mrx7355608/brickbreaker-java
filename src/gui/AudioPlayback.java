@@ -14,7 +14,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class AudioPlayback {
 
-    public void playMusic() {
+    public static void playMusic() {
         AudioInputStream audioStream;
         try {
             audioStream = AudioSystem.getAudioInputStream(new File("assets/bg-music.wav"));
@@ -36,7 +36,7 @@ public class AudioPlayback {
         }
     }
 
-    public void playSoundEffect() {
+    public static void playSoundEffect() {
         AudioInputStream soundEffectStream;
         Clip soundEffect;
         try {

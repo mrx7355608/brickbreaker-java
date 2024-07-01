@@ -19,7 +19,6 @@ public class GamePanel extends JPanel implements ActionListener {
     ArrayList<Brick> bricks = new ArrayList();
     private final BackgroundImageLabel backgroundImageLabel;
     private final Timer timer;
-    private final AudioPlayback audioPlayback;
     private final Settings gameSettings;
 
     public GamePanel() {
@@ -37,11 +36,8 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         super.add(backgroundImageLabel, BorderLayout.NORTH);
 
-        // Audio player for brick break sound effect
-        audioPlayback = new AudioPlayback();
-
         // Game settings
-        gameSettings = new Settings();
+        gameSettings = Settings.getInstance();
 
         // Start gameloop
         timer = new Timer(16, this);
@@ -64,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener {
         Brick collidedBrick = ball.checkCollisionsWithBricks(bricks);
         if (collidedBrick != null) {
             if (gameSettings.isSoundEffectsOn()) {
-                audioPlayback.playSoundEffect();
+                AudioPlayback.playSoundEffect();
             }
             backgroundImageLabel.remove(collidedBrick);
         }

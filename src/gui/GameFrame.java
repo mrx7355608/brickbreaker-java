@@ -8,7 +8,6 @@ public class GameFrame extends JFrame {
 
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 500;
-    private final AudioPlayback audioPlayback;
     private final Settings gameSettings;
 
     public GameFrame() {
@@ -20,8 +19,8 @@ public class GameFrame extends JFrame {
         super.setIconImage(new ImageIcon("assets/icon.png").getImage());
         super.add(new GamePanel());
         
-        audioPlayback = new AudioPlayback();
-        gameSettings = new Settings();
+        // Game settings
+        gameSettings = Settings.getInstance();
         
         if (gameSettings.isBackgroundMusicOn()) {
             this.playBackgroundMusic();
@@ -33,7 +32,7 @@ public class GameFrame extends JFrame {
      */
     private void playBackgroundMusic() {
         new Thread(() -> {
-            audioPlayback.playMusic();
+            AudioPlayback.playMusic();
         }).start();
     }
 }
