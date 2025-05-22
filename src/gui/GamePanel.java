@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -21,8 +22,10 @@ public class GamePanel extends JPanel implements ActionListener {
     private final BackgroundImageLabel backgroundImageLabel;
     private final Timer timer;
     private final Settings gameSettings;
+    private final JFrame parentUi;
 
-    public GamePanel() {
+    public GamePanel(JFrame ui) {
+        this.parentUi = ui;
         super.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         super.setLayout(new BorderLayout());
 
@@ -80,7 +83,9 @@ public class GamePanel extends JPanel implements ActionListener {
     private void checkGameover() {
         if (ball.y >= 500) {
             timer.stop();
+            this.parentUi.dispose();
             JOptionPane.showMessageDialog(this, "Gameover");
+            new GameFrame().setVisible(true);
         }
     }
 

@@ -4,7 +4,7 @@ package brickbreaker;
 
 public class Settings {
     private boolean backgroundMusicOn = true;
-    private boolean soundEffectsOn = false;
+    private boolean soundEffectsOn = true;
     private static Settings instance;
     
     public static Settings getInstance() {
